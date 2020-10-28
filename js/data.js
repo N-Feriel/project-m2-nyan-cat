@@ -26,8 +26,8 @@ const BONUS_HEIGHT = 10;
 const MAX_BONUSES = 2;
 const BONUS_SCORE = 50;
 
-// These constants represent the width and height of a lifes in pixels
-// as well as the maximum number of lifes on screen at any given time.
-const LIFE_WIDTH = 25;
-const LIFE_HEIGHT = 10;
-const MAX_LIFES = 2;
+// These constants represent the width and height of a lives in pixels
+// as well as the maximum number of lives on screen at any given time.
+const LIVE_WIDTH = 25;
+const LIVE_HEIGHT = 10;
+const MAX_LIVES = 2;

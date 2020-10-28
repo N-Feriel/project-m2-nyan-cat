@@ -30,9 +30,13 @@ class Engine {
         this.newGameMessage = new StartGame(this.root)
 
 
-        //Create Life variable
-        this.lifeCount = new Life(this.root, GAME_WIDTH - 150, 20);
-        this.lifeCount.update(`Lives: ${this.lifeCount.nlife}`);
+        //Create Live variable
+        this.liveCount = new Live(this.root, GAME_WIDTH - 150, 20);
+        this.liveCount.update(`Lives:${this.liveCount.nlive}`);
+
+
+
+
 
 
 
@@ -50,15 +54,19 @@ class Engine {
         // Initially, we have no bonuses in the game. The bonuses property refers to an array
         this.bonuses = []
 
-        // Initially, we have no lifes in the game. The bonuses property refers to an array
-        this.lifes = []
+        // Initially, we have no lives in the game. The bonuses property refers to an array
+        this.lives = []
 
 
         // We add the background image to the game
         addBackground(this.root, 'images/stars.png');
 
 
+        this.mySound = new Sound('./images/GaiNeeToren.mp3');
 
+
+
+        //this.newGameMessage.domElementBtn.addEventListener('click', this.mySound.playSound)
     }
 
     // The gameLoop will run every few milliseconds. It does several things
@@ -69,7 +77,7 @@ class Engine {
 
         //hide  the button start from the game 
         this.newGameMessage.domElement.style.display = 'none';
-
+        this.mySound.playSound();
 
         // This code is to see how much time, in milliseconds, has elapsed since the last
         // time this method was called.
@@ -129,24 +137,24 @@ class Engine {
         }
 
 
-        //lifes Part
+        //lives Part
 
-        this.lifes.forEach((life) => {
-            life.update(timeDiff);
+        this.lives.forEach((live) => {
+            live.update(timeDiff);
         });
 
 
-        this.lifes = this.lifes.filter((life) => {
-            return !life.destroyed;
+        this.lives = this.lives.filter((live) => {
+            return !live.destroyed;
         });
 
 
 
-        while (this.lifes.length < MAX_LIFES) {
+        while (this.lives.length < MAX_LIVES) {
 
-            const spot = nextBonusSpot(this.lifes);
+            const spot = nextBonusSpot(this.lives);
 
-            this.lifes.push(new Lifes(this.root, spot));
+            this.lives.push(new Lives(this.root, spot));
         }
 
 
@@ -154,12 +162,12 @@ class Engine {
         this.isPlayerBonus = this.isPlayerDo(this.bonuses);
 
 
-        // We check if the player is dead. If he is, he lost a life 
+        // We check if the player is dead. If he is, he lost a live 
 
         this.isPlayerDead = this.isPlayerDo(this.enemies);
 
-        //check for the lifes  if he hits the hart bonus .
-        this.isPlayerLive = this.isPlayerDo(this.lifes);
+        //check for the lives  if he hits the hart bonus .
+        this.isPlayerLive = this.isPlayerDo(this.lives);
 
 
 
@@ -168,31 +176,30 @@ class Engine {
 
         if (this.isPlayerBonus) {
             this.scoreTotal += this.bonusScore;
-            console.log(this.scoreTotal)
         }
 
         if (this.isPlayerLive) {
-            this.lifeCount.nlife += 1;
-            this.lifeCount.update(`Lives: ${this.lifeCount.nlife}`);
+            this.liveCount.nlive += 1;
+            this.liveCount.update(`Lives:${this.liveCount.nlive}`);
         }
 
         if (this.isPlayerDead) {
-            //console.log(this.lifes.nlife, i)
-            this.lifeCount.nlife -= 1;
-            this.lifeCount.update(`Lives: ${this.lifeCount.nlife}`);
+            //console.log(this.lives.nlive, i)
+            this.liveCount.nlive -= 1;
+            this.liveCount.update(`Lives:${this.liveCount.nlive}`);
         }
 
-        if (this.lifeCount.nlife === 0) {
+        if (this.liveCount.nlive === 0) {
 
             this.gameOverNotify();
-            this.clearGame()
+
             return;
         }
 
 
         //Update Level score
 
-        this.levelScore = Math.floor(this.scoreTotal / 10000)
+        this.levelScore = Math.floor(this.scoreTotal / 1000)
         this.level.update(`Level ${this.levelScore}`);
 
 
@@ -208,10 +215,10 @@ class Engine {
 
         //Change background Image when the player reach level 5 and 10 
 
-        if (this.levelScore == 5) {
+        if (this.levelScore == 2) {
             changeBackground(this.root, '/images/game-background-1.jpg');
         }
-        if (this.levelScore == 10) {
+        if (this.levelScore == 4) {
             changeBackground(this.root, '/images/game-background-2.jpg');
         }
 
@@ -238,20 +245,23 @@ class Engine {
     // methode to display message when the game is Over
     gameOverNotify = () => {
 
-        let message = `Game Over 
+        let message1 = `${this.scoreTotal}`
 
-        your Score is ${this.scoreTotal}
-                &&
-        your Level is ${this.levelScore}`
+        let message2 = `${this.levelScore}`;
 
-        window.alert(message);
+        this.finishGameMessage = new FinishGame(this.root, message1, message2)
+
+        this.finishGameMessage.domElementBtn.addEventListener('click', this.mySound.stopSound);
+        this.finishGameMessage.domElementBtn.addEventListener('click', this.clearGame);
+
+        //window.alert(message);
 
     }
 
 
 
 
-    // method to verify if the burger hit element (enmy, bonus or life)
+    // method to verify if the burger hit element (enmy, bonus or live)
 
     isPlayerDo = (array) => {
 
@@ -261,6 +271,8 @@ class Engine {
 
             if (this.player.x === elm.x && elm.y >= this.player.y) {
                 elm.destroyed = true;
+
+
                 elm.destroy();
                 isGetDo = true;
 
@@ -276,6 +288,8 @@ class Engine {
     clearGame = () => {
         window.location.reload();
     }
+
+
 
 
 

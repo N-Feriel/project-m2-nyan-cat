@@ -1,11 +1,11 @@
-class Life extends Text {
+class Live extends Text {
 
     constructor(root, xPos, yPos) {
 
 
         super(root, xPos, yPos)
 
-        this.nlife = 3;
+        this.nlive = 3;
 
     }
 

@@ -42,5 +42,12 @@ document.addEventListener('keydown', keydownHandler);
 
 gameEngine.newGameMessage.domElementBtn.addEventListener('click', gameEngine.gameLoop);
 
+
+// gameEngine.newGameMessage.domElementBtn.addEventListener('click', gameEngine.mySound.playSound)
+
+
+
+
+
 //Add start new game any time of the game
 gameEngine.newGame.domElement.addEventListener('click', gameEngine.clearGame)
