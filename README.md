@@ -1,6 +1,9 @@
 # NYAN KAT Game Project
 
-<p align="center"><img src="./images/screenshot.png"></p>
+<p align="center"><img src="./images/ScreenShot1.png"></p>
+
+<p align="center"><img src="./images/ScreenShot1.png"></p>
+
 
 
 ## 1.The game Introduction: 
@@ -22,6 +25,8 @@ The longer you stay alive, the higher your score but it's not the only way. You 
 - Add lives : `hart: +1`. The game starts with 3 lives.
 - Increase the difficulty level of the game as time passes by adding `extra the enemies` in screen each time the level of the game `5 times`.
 - Change the `backgroundImage` of the game when the player reach the level 5 and 10.
+<p align="center"><img src="./images/ScreenShot2.png"></p>
+<p align="center"><img src="./images/ScreenShot3.png"></p>
 - Add `stars` Bonus that will also fall from the sky and add points to the score.
 - Add up/down to allowing the player to also move around the screen.
 - Add BeginMessage with start Button to `start` a new  game 
