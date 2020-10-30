@@ -36,4 +36,4 @@ The longer you stay alive, the higher your score but it's not the only way. You 
 
 ## 3. Netlify link:
 
-  - https://docs.google.com/document/d/1J7ff9h77RMrQadgCM54eziW_Rj5_PAHYpQHYjf2ojZU/edit?usp=sharing
+  - 
