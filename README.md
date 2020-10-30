@@ -39,4 +39,4 @@ The longer you stay alive, the higher your score but it's not the only way. You 
 
 ## 3. Netlify link:
 
-  - 
+  - https://hardcore-swartz-f3b51f.netlify.app
