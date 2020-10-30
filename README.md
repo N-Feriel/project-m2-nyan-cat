@@ -2,7 +2,7 @@
 
 <p align="center"><img src="./images/ScreenShot1.png"></p>
 
-<p align="center"><img src="./images/ScreenShot1.png"></p>
+<p align="center"><img src="./images/ScreenShot-1.png"></p>
 
 
 
