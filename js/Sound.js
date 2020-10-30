@@ -8,8 +8,6 @@ class Sound {
         this.sound.appendChild(this.source)
         this.source.src = src;
 
-        this.sound.setAttribute("preload", "auto");
-        this.sound.setAttribute("controls", "none");
         this.source.setAttribute("type", 'audio/mpeg')
         document.getElementById('app').appendChild(this.sound);
 

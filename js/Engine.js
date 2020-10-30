@@ -35,11 +35,6 @@ class Engine {
         this.liveCount.update(`Lives:${this.liveCount.nlive}`);
 
 
-
-
-
-
-
         //Create Level variable 
 
         this.levelScore = 0;
@@ -62,7 +57,7 @@ class Engine {
         addBackground(this.root, 'images/stars.png');
 
 
-        this.mySound = new Sound('./images/GaiNeeToren.mp3');
+        this.mySound = new Sound('./sounds/GaiNeeToren.mp3');
 
 
 
@@ -210,15 +205,14 @@ class Engine {
 
         if (this.levelScore % 5 === 0) {
             MAX_ENEMIES = 3 + this.nDificulty;
-
         }
 
         //Change background Image when the player reach level 5 and 10 
 
-        if (this.levelScore == 2) {
+        if (this.levelScore == 5) {
             changeBackground(this.root, '/images/game-background-1.jpg');
         }
-        if (this.levelScore == 4) {
+        if (this.levelScore == 10) {
             changeBackground(this.root, '/images/game-background-2.jpg');
         }
 
@@ -254,7 +248,6 @@ class Engine {
         this.finishGameMessage.domElementBtn.addEventListener('click', this.mySound.stopSound);
         this.finishGameMessage.domElementBtn.addEventListener('click', this.clearGame);
 
-        //window.alert(message);
 
     }
 

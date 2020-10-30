@@ -11,7 +11,7 @@ class StartGame {
 
         this.domElement1 = document.createElement('h2');
         this.domElement1.style.textAlign = 'center';
-        this.domElement1.innerHTML = "Welcome to the Game"
+        this.domElement1.innerHTML = "Welcome to Nyan cat Game"
 
         this.domElement2 = document.createElement('div');
         this.domElement2.style.display = 'flex';
